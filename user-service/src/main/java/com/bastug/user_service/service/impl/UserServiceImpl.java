@@ -9,7 +9,6 @@ import com.bastug.user_service.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -69,7 +68,6 @@ public class UserServiceImpl implements UserService {
                 User user = UserMapper.userDtoFillUserForUpdate(optionalUser.get(), userDto);
                 return UserMapper.userToUserDto(userRepository.save(user));
             }
-            return null;
         }
         return null;
     }

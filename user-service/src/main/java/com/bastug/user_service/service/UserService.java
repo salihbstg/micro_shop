@@ -2,6 +2,7 @@ package com.bastug.user_service.service;
 
 import com.bastug.user_service.dto.APIResponseDto;
 import com.bastug.user_service.dto.UserDto;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 

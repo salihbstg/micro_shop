@@ -6,11 +6,11 @@ import com.bastug.user_service.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
@@ -20,7 +20,7 @@ public class UserController {
         return ResponseEntity.ok(userService.saveUser(userDto));
     }
 
-    @PostMapping("{userId}/withdraw")
+    @PostMapping("{userId}/deposit")
     public ResponseEntity<APIResponseDto> deposit(@RequestParam(name = "amount") Double amount, @PathVariable(name="userId") Long userId) {
         return ResponseEntity.ok(userService.deposit(amount, userId));
     }
@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<APIResponseDto>> getAllUsers() {
+    public ResponseEntity<List<APIResponseDto>> getAllUsers( ) {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
