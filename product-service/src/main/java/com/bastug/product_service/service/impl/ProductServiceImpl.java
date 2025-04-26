@@ -7,6 +7,7 @@ import com.bastug.product_service.repository.ProductRepository;
 import com.bastug.product_service.service.ProductService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -125,5 +126,15 @@ public class ProductServiceImpl implements ProductService {
             return product.getPrice();
         }
         return null;
+    }
+
+    @Override
+    public List<ProductDto> getProductsByIds(List<Long> productIdList) {
+        List<ProductDto> products=new ArrayList<>();
+        for(Long a:productIdList){
+            Optional<Product> optionalProduct = productRepository.findById(a);
+            optionalProduct.ifPresent(product -> products.add(ProductMapper.productToProductDto(product)));
+        }
+        return products;
     }
 }

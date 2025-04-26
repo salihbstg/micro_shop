@@ -64,11 +64,12 @@ public class CartServiceImpl implements CartService {
         if (validateUserAndProductExistence(userId)) {
             UserDto userDto = userFeign.getUserById(userId);
             List<ProductDto> productDtoList = new ArrayList<>();
+            List<Long> productIdList = new ArrayList<>();
             List<Cart> cartElements = cartRepository.findByUserId(userId);
             for (Cart cartElement : cartElements) {
-                ProductDto productDto = productFeign.getProductById(cartElement.getProductId());
-                productDtoList.add(productDto);
+                productIdList.add(cartElement.getProductId());
             }
+            productDtoList=productFeign.findProductsByProductIdList(productIdList);
             return new CartDto(userDto, productDtoList);
         }
         return null;

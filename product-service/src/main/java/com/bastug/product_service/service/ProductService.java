@@ -1,6 +1,7 @@
 package com.bastug.product_service.service;
 
 import com.bastug.product_service.dto.ProductDto;
+import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 import java.util.List;
@@ -30,4 +31,6 @@ public interface ProductService {
     Double updatePrice(Double delta,Long id);
 
     Double updateStock(int delta, Long id);
+
+    List<ProductDto> getProductsByIds(List<Long> productIdList);
 }

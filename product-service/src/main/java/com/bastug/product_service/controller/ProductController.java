@@ -75,4 +75,9 @@ public class ProductController {
         productService.deleteProductByName(name);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/getProductsByIds")
+    public ResponseEntity<List<ProductDto>> findProductsByProductIdList(@RequestBody List<Long> productIdList){
+        return ResponseEntity.ok(productService.getProductsByIds(productIdList));
+    }
 }
