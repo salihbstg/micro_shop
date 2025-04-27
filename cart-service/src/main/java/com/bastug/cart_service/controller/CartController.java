@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/cart")
@@ -27,7 +25,13 @@ public class CartController {
 
     @DeleteMapping
     public ResponseEntity<Void> removeProductFromCart(@RequestParam(name = "userId") Long userId, @RequestParam(name = "productId") Long productId){
-        cartService.deleteProductInCart(userId,productId);
+        cartService.removeProductFromCart(userId,productId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/allProductsFromCart/{userId}")
+    public ResponseEntity<Void> removeAllProductsFromCart(@PathVariable(name = "userId") Long userId){
+        cartService.removeAllProductsFromCart(userId);
         return ResponseEntity.noContent().build();
     }
 }

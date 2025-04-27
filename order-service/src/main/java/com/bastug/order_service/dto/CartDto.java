@@ -1,4 +1,4 @@
-package com.bastug.cart_service.dto;
+package com.bastug.order_service.dto;
 
 import java.util.List;
 
@@ -7,4 +7,3 @@ public record CartDto(
         List<ProductDto> productDtoList
 ) {
 }
-

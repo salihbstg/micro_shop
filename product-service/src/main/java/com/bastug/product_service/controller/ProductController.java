@@ -59,6 +59,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.updateStock(delta,id));
     }
 
+
     @PutMapping
     public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto productDto) {
         return ResponseEntity.ok(productService.updateProduct(productDto));

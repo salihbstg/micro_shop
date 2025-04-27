@@ -52,7 +52,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void deleteProductInCart(Long userId, Long productId) {
+    public void removeProductFromCart(Long userId, Long productId) {
         if (validateUserAndProductExistence(userId, productId)) {
             Cart cart = cartRepository.findByUserIdAndProductId(userId, productId);
             cartRepository.delete(cart);
@@ -73,5 +73,11 @@ public class CartServiceImpl implements CartService {
             return new CartDto(userDto, productDtoList);
         }
         return null;
+    }
+
+    @Override
+    public void removeAllProductsFromCart(Long userId) {
+        List<Cart> carts=cartRepository.findByUserId(userId);
+        cartRepository.deleteAll(carts);
     }
 }
