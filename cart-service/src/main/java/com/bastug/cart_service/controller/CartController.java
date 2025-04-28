@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/cart")
 public class CartController {
     private final CartService cartService;
-    private final ServletWebServerApplicationContext context;
+//    private final ServletWebServerApplicationContext context;
 
     @GetMapping
     public ResponseEntity<CartDto> getCart(@RequestParam(name = "userId") Long userId) {
-        WebServer webServer = context.getWebServer();
-        System.out.println(webServer.getPort());
+//        WebServer webServer = context.getWebServer();
+//        System.out.println(webServer.getPort());
         return ResponseEntity.ok(cartService.getCartByUserId(userId));
     }
 
