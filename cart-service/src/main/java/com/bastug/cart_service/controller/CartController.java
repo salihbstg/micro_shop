@@ -2,10 +2,7 @@ package com.bastug.cart_service.controller;
 
 import com.bastug.cart_service.dto.CartDto;
 import com.bastug.cart_service.service.CartService;
-import jakarta.ws.rs.core.Application;
 import lombok.AllArgsConstructor;
-import org.springframework.boot.web.server.WebServer;
-import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
